@@ -31,11 +31,11 @@ def insert_into_db():
             # Daten in die neue Sammlung einfügen
             if isinstance(data, list):
                 speak.insert_many(data)
-                vote.insert_one({ }, {})
+                # vote.insert_one({ }, {})
 
             else:
                 speak.insert_one(data)
-                vote.insert_one({ })
+                # vote.insert_one({ })
 
             print(f"Daten von {filename} erfolgreich in der neuen Datenbank '{db_name}' im Cluster gespeichert.")
 
