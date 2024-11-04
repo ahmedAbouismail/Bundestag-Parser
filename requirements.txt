@@ -1,0 +1,3 @@
+# if needed
+#package==x.xx.xx
+pymongo==4.10.1
