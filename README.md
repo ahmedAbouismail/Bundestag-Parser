@@ -47,3 +47,16 @@ docker cp data/documents  bundestag-crawler:/data
 - MongoDB in VM? Gerade ist es noch lokal bzw auf Cluster in der cloud
 
 - Alles was bei uns mit Docker zu tun hat, ist wahrscheinlich nur für den späteren verlauf wichtig ``` docker compose -f docker-compose.yml up -d ```
+
+### Was ich probiert habe (Marc)
+
+- Ich habe diese Befehle ausgeführt:
+
+docker build -t bt_extraction .
+
+docker run -d --name bt_extraction_cron -v /var/lib/docker/volumes/def2c69a52761734a603e6be7d22bd4a493b82e011a9f7a8fe7935528f0197b5/_data:/app/data bt_extraction
+
+aber das Problem was ich euch beschrieben habe bekommen.
+
+/var/lib/docker/volumes/def2c69a52761734a603e6be7d22bd4a493b82e011a9f7a8fe7935528f0197b5/_data ist der Pfad von dem Volume von dem Crawler.
+den bekommt ihr so: volume inspect name_von dem_volume
