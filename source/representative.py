@@ -44,7 +44,7 @@ def parse_mdb(mdb_element):
     return result
 
 def get_all():
-    tree = ET.parse("app/data/MDB_STAMMDATEN.XML")
+    tree = ET.parse("/data/MDB_STAMMDATEN.XML")
     root = tree.getroot()
 
     # Extrahiere alle MDB Einträge

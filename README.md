@@ -50,13 +50,28 @@ docker cp data/documents  bundestag-crawler:/data
 
 ### Was ich probiert habe (Marc)
 
-- Ich habe diese Befehle ausgeführt:
+Erstellt ein eigenes Volume bei euch in Docker mit dem Namen crawler_data. Dann: 
 
-docker build -t bt_extraction .
+```
+docker run --name bt_crawler_instant -v crawler_data:/data lajahom/bundestag-crawler:instant --> Für Instant
+```
 
-docker run -d --name bt_extraction_cron -v /var/lib/docker/volumes/def2c69a52761734a603e6be7d22bd4a493b82e011a9f7a8fe7935528f0197b5/_data:/app/data bt_extraction
+oder
 
-aber das Problem was ich euch beschrieben habe bekommen.
+```
+docker run --name bt_crawler_cron -v crawler_data:/data lajahom/bundestag-crawler:cron
+```
 
-/var/lib/docker/volumes/def2c69a52761734a603e6be7d22bd4a493b82e011a9f7a8fe7935528f0197b5/_data ist der Pfad von dem Volume von dem Crawler.
-den bekommt ihr so: volume inspect name_von dem_volume
+Anschließend wechelt in unser Projekt-Verzeichnis (wo auch die Read-Me liegt) und macht:
+
+```
+docker build -t bt_extraction_cron .
+```
+
+und dann 
+
+```
+docker run --name bt_extraction_cron -v crawler_data:/data bt_extraction_cron
+```
+
+Ich bekomme das einfach nicht hin, dass pymongo installiert wird im Container.

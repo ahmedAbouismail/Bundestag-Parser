@@ -8,7 +8,7 @@ WORKDIR /app
 COPY . /app
 
 # Abhängigkeiten installieren
-RUN pip install pymongo
+RUN python3 -m pip install -r requirements.txt
 
 # Cron installieren
 RUN apt-get update && apt-get install -y cron
