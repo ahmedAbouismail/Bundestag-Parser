@@ -2,8 +2,8 @@ version: '3.8'
 
 services:
   bt_crawler:
-    image: lajahom/bundestag-crawler:instant
-    container_name: bundestag-crawler-instant
+    image: lajahom/bundestag-crawler:cron
+    container_name: bundestag-crawler-cron
     volumes:
       - crawler:/data
     restart: always
