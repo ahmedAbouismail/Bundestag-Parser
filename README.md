@@ -1,6 +1,6 @@
 # Parser #
 
-## Wie startet  man den Parser ###
+## Parser normal starten ###
 
 Eigenes Volume in Docker erstellen mit zb. dem Namen crawler_data: 
 
@@ -28,8 +28,11 @@ und dann docker starten
 docker run --name bt_extraction_cron -v crawler_data:/data bt_extraction_cron
 ```
 
-### ToDo/Notes
+## Parser über compose starten ###
+```
+docker-compose up -d
 
-- MongoDB in VM? Gerade ist es noch lokal bzw auf Cluster in der cloud
+
+### ToDo/Notes
 
 - Abstimmungsdaten fehlen
