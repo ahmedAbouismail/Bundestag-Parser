@@ -43,7 +43,7 @@ def parse_mdb(mdb_element):
             }
             wahlperiode["institutionen"].append(institution_data)
 
-    wahlperioden.append(wahlperiode)
+        wahlperioden.append(wahlperiode)
 
     # Erstelle das JSON-kompatible Dictionary
     result = {
