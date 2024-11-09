@@ -24,7 +24,7 @@ Bau das Docker-Image lokal und push es, um den Parser mit den neuesten Änderung
 .\build.bat
 ```
 
-### 3. Docker-Container mit Docker Compose erstellen
+### 2. Docker-Container mit Docker Compose erstellen
 Starten Sie einen Container für den Parser im Hintergrund. (VM)
 
 ```bash
