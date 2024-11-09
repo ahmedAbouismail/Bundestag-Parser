@@ -34,7 +34,7 @@ docker compose up -d
 Der Container wird nun mit den neuesten Änderungen ausgeführt und beginnt, die Bundestagsprotokolle und Stammdaten zu verarbeiten und in die MongoDB zu laden.
 
 ## Autoren ##
-Ala Al-Khazzan, Ahmed Abouismail, Marc Zimmermann
+Ala Al-Khazzan, Ahmed Abouismail, Marc Zimmermann<br>
 Projektteam 2 - Bundestag-Parser, HTW Berlin
 
 ### ToDo/Notes
