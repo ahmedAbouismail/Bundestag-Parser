@@ -8,7 +8,7 @@ def parse_mdb(mdb_element):
     titel = mdb_element.findtext("NAMEN/NAME/ANREDE_TITEL")
     vorname = mdb_element.findtext("NAMEN/NAME/VORNAME")
     nachname = mdb_element.findtext("NAMEN/NAME/NACHNAME")
-    fraktion = mdb_element.find("WAHLPERIODEN/WAHLPERIODE/INSTITUTIONEN/INSTITUTION/INS_LANG").text
+    fraktion = mdb_element.find("BIOGRAFISCHE_ANGABEN/PARTEI_KURZ").text
     
     # Biographie
     biographie = {
@@ -27,10 +27,23 @@ def parse_mdb(mdb_element):
             "wahlperiode": wp.findtext("WP"),
             "von": wp.findtext("MDBWP_VON"),
             "bis": wp.findtext("MDBWP_BIS"),
-            "fraktion": wp.findtext("INSTITUTIONEN/INSTITUTION/INS_LANG"),
-            "funktion": wp.findtext("INSTITUTIONEN/INSTITUTION/FKT_LANG", default="")
+            "institutionen": []
         }
-        wahlperioden.append(wahlperiode)
+
+        # Durchlaufe alle Institutionen in der Wahlperiode
+        for institution in wp.findall("INSTITUTIONEN/INSTITUTION"):
+            institution_data = {
+                "institutionsart": institution.findtext("INSART_LANG"),
+                "institutionsname": institution.findtext("INS_LANG"),
+                "mdb_von": institution.findtext("MDBINS_VON"),
+                "mdb_bis": institution.findtext("MDBINS_BIS"),
+                "funktion": institution.findtext("FKT_LANG", default=""),
+                "funktion_von": institution.findtext("FKTINS_VON", default=""),
+                "funktion_bis": institution.findtext("FKTINS_BIS", default="")
+            }
+            wahlperiode["institutionen"].append(institution_data)
+
+    wahlperioden.append(wahlperiode)
 
     # Erstelle das JSON-kompatible Dictionary
     result = {
