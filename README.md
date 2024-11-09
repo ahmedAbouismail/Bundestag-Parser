@@ -17,22 +17,15 @@ Der Bundestag-Parser extrahiert und speichert alle wichtigen Informationen aus d
 
 Nach jeder Änderung im Quellcode sind folgende Schritte erforderlich, um den Parser zu aktualisieren und auszuführen:
 
-### 1. Docker-Image erstellen
-Bauen Sie das Docker-Image lokal, um den Parser mit den neuesten Änderungen zu aktualisieren.
+### 1. Docker-Image erstellen und pushen
+Bau das Docker-Image lokal und push es, um den Parser mit den neuesten Änderungen zu aktualisieren.
 
 ```bash
-docker build -t darthyoda030/bundestag-parser:cron .
-```
-
-### 2. Docker-Image pushen
-Pushen Sie das neue Image in das Docker Hub-Repository, um es verfügbar zu machen.
-
-```bash
-docker push darthyoda030/bundestag-parser:cron
+.\build.bat
 ```
 
 ### 3. Docker-Container mit Docker Compose erstellen
-Starten Sie einen Container für den Parser im Hintergrund.
+Starten Sie einen Container für den Parser im Hintergrund. (VM)
 
 ```bash
 docker compose up -d
