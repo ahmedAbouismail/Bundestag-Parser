@@ -48,12 +48,12 @@ def parse_mdb(mdb_element):
 def get_all():
 
     # Falls wir keine XML-File für die Stammdaten erhalten, dannn einfach hier extracten
-    # zip_path = "../data/Stammdaten.zip"
-    # extract_path = "../data/"
-    # with zipfile.ZipFile(zip_path, 'r') as zip_ref:
-    #     # Extrahiere eine bestimmte Datei
-    #     zip_ref.extract("MDB_STAMMDATEN.XML", extract_path)
-    #     print("example.txt wurde extrahiert.")
+    zip_path = "../data/Stammdaten.zip"
+    extract_path = "../data/"
+    with zipfile.ZipFile(zip_path, 'r') as zip_ref:
+        # Extrahiere eine bestimmte Datei
+        zip_ref.extract("MDB_STAMMDATEN.XML", extract_path)
+        print("example.txt wurde extrahiert.")
 
     tree = ET.parse("../data/MDB_STAMMDATEN.XML")
     root = tree.getroot()
