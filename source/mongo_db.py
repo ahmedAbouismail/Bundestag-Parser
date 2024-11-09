@@ -3,7 +3,7 @@ from pymongo.operations import UpdateOne
 
 try:
     # client = MongoClient("mongodb://localhost:27017/")
-    client = MongoClient("mongodb+srv://s0573997:mongodb123@bundestag.o75ow.mongodb.net/?retryWrites=true&w=majority&appName=Bundestag")
+    client = MongoClient("mongodb://infosys1.f4.htw-berlin.de:27017")
     db = client["bundestag"]
 except errors.ConnectionFailure as e:
     print(f"Verbindungsfehler: {e}")
