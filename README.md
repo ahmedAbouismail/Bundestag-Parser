@@ -33,6 +33,86 @@ docker compose up -d
 
 Der Container wird nun mit den neuesten Änderungen ausgeführt und beginnt, die Bundestagsprotokolle und Stammdaten zu verarbeiten und in die MongoDB zu laden.
 
+### Nutzeranweisungen
+
+#### Täglicher Datenabruf
+Jeden Tag um 18:30 Uhr holt unser Parser automatisch die neuen Bundestagsprotokolle vom [Crawler Team1](https://gitlab.com/bachelor8684930/bundestagcrawler). Nach dem Abruf beginnt der Parser sofort mit der Extraktion der relevanten Informationen aus den Protokollen und den Stammdaten der Abgeordneten.
+
+#### Datenzugriff
+Um auf die extrahierten Daten zuzugreifen, stellen Sie bitte eine Verbindung zur MongoDB-Datenbank her. Verwenden Sie dazu folgende Zugangsdaten:
+- **Host**: infosys1.f4.htw-berlin.de:27017
+  (Der Zugriff ist nur aus dem HTW-Netzwerk oder über VPN möglich.)
+- **Datenbankname**: `bundestag`
+
+Die Datenbank enthält zwei Hauptkollektionen:
+- **Protokolle**: `protokolle`
+- **Stammdaten der Abgeordneten**: `mdb_stammdaten`
+
+#### Beispielcode für den Datenzugriff (Python)
+```python
+from pymongo import MongoClient
+
+# Verbindung zur MongoDB
+client = MongoClient("mongodb://infosys1.f4.htw-berlin.de:27017")
+db = client["bundestag"]
+
+# Daten aus den Kollektionen abfragen
+protokolle = db["protokolle"].find({})
+abgeordnete = db["mdb_stammdaten"].find({})
+```
+
+#### Datenstruktur
+
+##### Bundestagsprotokolle
+Die JSON-Struktur der Bundestagsprotokolle ist wie folgt aufgebaut:
+```json
+{
+  "id": "string",
+  "datum": "string",
+  "wahlperiode": "string",
+  "sitzungsnummer": "string",
+  "sitzungsverlauf": [
+    {
+      "rede": [
+        {
+          "redner": "string",
+          "redner_id": "string",
+          "text": "string"
+        }
+      ]
+    }
+  ]
+}
+```
+
+##### Stammdaten der Abgeordneten
+Die JSON-Struktur der Stammdaten der Abgeordneten sieht so aus:
+```json
+{
+  "id": "string",
+  "titel": "string",
+  "vorname": "string",
+  "nachname": "string",
+  "fraktion": "string",
+  "biographie": {
+    "geburtsdatum": "string",
+    "sterbedatum": "string",
+    "geschlecht": "string",
+    "familienstand": "string",
+    "beruf": "string",
+    "lebenslauf": "string"
+  },
+  "wahlperiode": [
+    {
+      "wahlperiode": "string",
+      "von": "string",
+      "bis": "string",
+      "fraktion": "string",
+      "funktion": "string"
+    }
+  ]
+}
+```
 ## Autoren ##
 Ala Al-Khazzan, Ahmed Abouismail, Marc Zimmermann<br>
 Projektteam 2 - Bundestag-Parser, HTW Berlin
