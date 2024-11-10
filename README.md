@@ -67,7 +67,7 @@ abgeordnete = db["mdb_stammdaten"].find({})
 Die JSON-Struktur der Bundestagsprotokolle ist wie folgt aufgebaut:
 ```json
 {
-  "id": "string",
+  "id": 0001,
   "datum": "string",
   "wahlperiode": "string",
   "sitzungsnummer": "string",
@@ -75,7 +75,6 @@ Die JSON-Struktur der Bundestagsprotokolle ist wie folgt aufgebaut:
     {
       "rede": [
         {
-          "redner": "string",
           "redner_id": "string",
           "text": "string"
         }
