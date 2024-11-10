@@ -30,7 +30,7 @@ docker compose up -d
 
 Der Container wird nun mit den neuesten Änderungen ausgeführt und beginnt, die Bundestagsprotokolle und Stammdaten zu verarbeiten und in die MongoDB zu laden.
 
-## Nutzeranweisungen
+## Benutzer-Informationen
 
 ### Täglicher Datenabruf
 Jeden Tag um 18:30 Uhr holt unser Parser automatisch die neuen Bundestagsprotokolle, Stammdaten und Abstimmungsdaten vom [Crawler Team1](https://gitlab.com/bachelor8684930/bundestagcrawler). Nach dem Abruf beginnt der Parser sofort mit der Extraktion der relevanten Informationen aus den Protokollen und den Stammdaten der Abgeordneten.
