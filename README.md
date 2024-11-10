@@ -3,28 +3,25 @@
 ## Projektbeschreibung
 Der Bundestag-Parser extrahiert und speichert alle wichtigen Informationen aus den Bundestagsprotokollen und den Stammdaten der Abgeordneten seit 1949. Die extrahierten Daten werden in MongoDB im BSON-Format gespeichert und sind für die Weiterverarbeitung zugänglich.
 
-- **Datenbank**: MongoDB
-- **Host**: infosys1.f4.htw-berlin.de:27017
-- **Datenformat**: BSON
-
-## Anforderungen
+## Entwickler-Informationen
+### Anforderungen
 
 - **Docker**
 - **Docker Compose**
 - Zugang zur MongoDB-Datenbank
 
-## Workflow
+### Workflow
 
 Nach jeder Änderung im Quellcode sind folgende Schritte erforderlich, um den Parser zu aktualisieren und auszuführen:
 
-### 1. Docker-Image erstellen und pushen
+#### 1. Docker-Image erstellen und pushen
 Bau das Docker-Image lokal und push es, um den Parser mit den neuesten Änderungen zu aktualisieren.
 
 ```bash
 .\build.bat
 ```
 
-### 2. Docker-Container mit Docker Compose erstellen
+#### 2. Docker-Container mit Docker Compose erstellen
 Starten Sie einen Container für den Parser im Hintergrund. (VM)
 
 ```bash
@@ -33,22 +30,23 @@ docker compose up -d
 
 Der Container wird nun mit den neuesten Änderungen ausgeführt und beginnt, die Bundestagsprotokolle und Stammdaten zu verarbeiten und in die MongoDB zu laden.
 
-### Nutzeranweisungen
+## Nutzeranweisungen
 
-#### Täglicher Datenabruf
+### Täglicher Datenabruf
 Jeden Tag um 18:30 Uhr holt unser Parser automatisch die neuen Bundestagsprotokolle, Stammdaten und Abstimmungsdaten vom [Crawler Team1](https://gitlab.com/bachelor8684930/bundestagcrawler). Nach dem Abruf beginnt der Parser sofort mit der Extraktion der relevanten Informationen aus den Protokollen und den Stammdaten der Abgeordneten.
 
-#### Datenzugriff
+### Datenzugriff
 Um auf die extrahierten Daten zuzugreifen, stellen Sie bitte eine Verbindung zur MongoDB-Datenbank her. Verwenden Sie dazu folgende Zugangsdaten:
-- **Host**: infosys1.f4.htw-berlin.de:27017
+- **Host**: `infosys1.f4.htw-berlin.de:27017`
   (Der Zugriff ist nur aus dem HTW-Netzwerk oder über VPN möglich.)
 - **Datenbankname**: `bundestag`
 
-Die Datenbank enthält zwei Hauptkollektionen:
+Die Datenbank enthält drei Hauptkollektionen:
 - **Protokolle**: `protokolle`
 - **Stammdaten der Abgeordneten**: `mdb_stammdaten`
+- **Namentliche Abstimmungen**: `namentliche_abstimmungen` (coming soon)
 
-#### Beispielcode für den Datenzugriff (Python)
+### Beispielcode für den Datenzugriff (Python)
 ```python
 from pymongo import MongoClient
 
@@ -59,11 +57,12 @@ db = client["bundestag"]
 # Daten aus den Kollektionen abfragen
 protokolle = db["protokolle"].find({})
 abgeordnete = db["mdb_stammdaten"].find({})
+abstimmungen = db["namentliche_abstimmungen"].find({})
 ```
 
-#### Datenstruktur
+### Datenstruktur
 
-##### Bundestagsprotokolle
+#### Bundestagsprotokolle
 Die JSON-Struktur der Bundestagsprotokolle ist wie folgt aufgebaut:
 ```json
 {
@@ -84,7 +83,7 @@ Die JSON-Struktur der Bundestagsprotokolle ist wie folgt aufgebaut:
 }
 ```
 
-##### Stammdaten der Abgeordneten
+#### Stammdaten der Abgeordneten
 Die JSON-Struktur der Stammdaten der Abgeordneten sieht so aus:
 ```json
 {
@@ -126,6 +125,7 @@ Die JSON-Struktur der Stammdaten der Abgeordneten sieht so aus:
 Ala Al-Khazzan, Ahmed Abouismail, Marc Zimmermann<br>
 Projektteam 2 - Bundestag-Parser, HTW Berlin
 
-### ToDo/Notes
+## ToDo/Notes
 
 - Abstimmungsdaten fehlen
+- XML für Stammdaten fehlt (Team 1)
