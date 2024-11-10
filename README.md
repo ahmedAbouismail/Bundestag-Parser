@@ -36,7 +36,7 @@ Der Container wird nun mit den neuesten Änderungen ausgeführt und beginnt, die
 ### Nutzeranweisungen
 
 #### Täglicher Datenabruf
-Jeden Tag um 18:30 Uhr holt unser Parser automatisch die neuen Bundestagsprotokolle vom [Crawler Team1](https://gitlab.com/bachelor8684930/bundestagcrawler). Nach dem Abruf beginnt der Parser sofort mit der Extraktion der relevanten Informationen aus den Protokollen und den Stammdaten der Abgeordneten.
+Jeden Tag um 18:30 Uhr holt unser Parser automatisch die neuen Bundestagsprotokolle, Stammdaten und Abstimmungsdaten vom [Crawler Team1](https://gitlab.com/bachelor8684930/bundestagcrawler). Nach dem Abruf beginnt der Parser sofort mit der Extraktion der relevanten Informationen aus den Protokollen und den Stammdaten der Abgeordneten.
 
 #### Datenzugriff
 Um auf die extrahierten Daten zuzugreifen, stellen Sie bitte eine Verbindung zur MongoDB-Datenbank her. Verwenden Sie dazu folgende Zugangsdaten:
