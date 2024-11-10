@@ -2,8 +2,10 @@ from pymongo import MongoClient, errors
 from pymongo.operations import UpdateOne
 
 try:
-    # client = MongoClient("mongodb://localhost:27017/")
-    client = MongoClient("mongodb://infosys1.f4.htw-berlin.de:27017")
+    with open("connectionString.txt", "r") as file:
+        connectionString = file.read()
+    
+    client = MongoClient(connectionString)
     db = client["bundestag"]
 except errors.ConnectionFailure as e:
     print(f"Verbindungsfehler: {e}")
@@ -11,7 +13,6 @@ except errors.PyMongoError as e:
     print(f"MongoDB-Fehler: {e}")
 except Exception as e:
     print(f"Ein unerwarteter Fehler ist aufgetreten: {e}")
-
 
 def sync(data, collection_name):
     try:

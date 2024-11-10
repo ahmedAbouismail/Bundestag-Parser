@@ -1,6 +1,5 @@
 import xml.etree.ElementTree as ET
 import zipfile
-import os
 
 def parse_mdb(mdb_element):
     # Extrahiere ID und persönliche Angaben
