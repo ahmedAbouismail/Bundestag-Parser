@@ -90,10 +90,6 @@ Die JSON-Struktur der Stammdaten der Abgeordneten sieht so aus:
 ```json
 {
   "id": "string",
-  "titel": "string",
-  "vorname": "string",
-  "nachname": "string",
-  "fraktion": "string",
   "biographie": {
     "geburtsdatum": "string",
     "sterbedatum": "string",
@@ -102,16 +98,30 @@ Die JSON-Struktur der Stammdaten der Abgeordneten sieht so aus:
     "beruf": "string",
     "lebenslauf": "string"
   },
+  "fraktion": "string",
+  "nachname": "string",
+  "titel": "string",
+  "vorname": "string",
   "wahlperiode": [
     {
       "wahlperiode": "string",
       "von": "string",
       "bis": "string",
-      "fraktion": "string",
-      "funktion": "string"
+      "institutionen": [
+        {
+          "institutionsart": "string",
+          "institutionsname": "string",
+          "mdb_von": "string",
+          "mdb_bis": "string",
+          "funktion": "string",
+          "funktion_von": "string",
+          "funktion_bis": "string"
+        }
+      ]
     }
   ]
 }
+
 ```
 ## Autoren ##
 Ala Al-Khazzan, Ahmed Abouismail, Marc Zimmermann<br>
