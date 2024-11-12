@@ -9,7 +9,7 @@ def parse_excel(df):
         "sitzungsnummer": str(df["Sitzungnr"].iloc[0]),
         "datum": "",
         "thema": "",
-        "stimmen": {
+        "stimmen_zählung": {
             "abgegebenen": str(df[["ja", "nein", "Enthaltung", "ungültig"]].sum().sum()),
             "nichtabgegeben": str(df["nichtabgegeben"].sum()),
             "ja": str(df["ja"].sum()),
@@ -17,7 +17,7 @@ def parse_excel(df):
             "enthaltungen": str(df["Enthaltung"].sum()),
             "ungültige": str(df["ungültig"].sum())
         },
-        "votes": []
+        "stimmen_namentlich": []
     }
 
     # Gruppierte Stimmabgabe erstellen
@@ -50,7 +50,7 @@ def parse_excel(df):
         grouped_votes[key]["name"].append(vote["name"])
 
     # Gruppierte Votes hinzufügen
-    parsed_data["votes"] = list(grouped_votes.values())
+    parsed_data["stimmen_namentlich"] = list(grouped_votes.values())
 
     return parsed_data
 
