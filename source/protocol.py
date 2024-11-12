@@ -1,15 +1,5 @@
-import os
 import xml.etree.ElementTree as ET
-
-def get_all_json():
-    all_json = []
-    folder_path = "../data/protocols"
-    for file in os.listdir(folder_path):
-        file_path = os.path.join(folder_path, file)
-        if os.path.isfile(file_path):  # Only process files, not subdirectories
-            all_json.append(parse_xml(file_path))
-
-    return all_json
+import os
 
 def parse_xml(xml_file):
     # Parse the XML file
@@ -67,3 +57,15 @@ def parse_xml(xml_file):
     }
 
     return json_data
+
+def get_all_json():
+    all_json = []
+    folder_path = "C:\\Users\\ala19\\uni\\parser\\data\\data\\protocols"
+    files = os.listdir(folder_path)[:5]
+    for file in files:
+        file_path = os.path.join(folder_path, file)
+        if os.path.isfile(file_path):  # Only process files, not subdirectories
+            all_json.append(parse_xml(file_path))
+
+    print("Protokolle erfolgreich geparst.") 
+    return all_json
