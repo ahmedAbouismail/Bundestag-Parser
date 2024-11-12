@@ -146,6 +146,35 @@ Die JSON-Struktur der Stammdaten der Abgeordneten:
 }
 ```
 
+#### Namentliche Abstimmungen
+
+Die JSON-Struktur der Namentliche Abstimmungen(vorerst):
+
+```json
+{
+  "id": "string",
+  "wahlperiode": "string",
+  "sitzungsnummer": "string",
+  "datum": "string",
+  "thema": "string",
+  "stimmen_zählung": {
+      "abgegebenen": "string",
+      "nichtabgegeben": "string",
+      "ja": "string",
+      "nein": "string",
+      "enthaltungen": "string",
+      "ungültige": "string"
+    },
+  "stimmen_namentlich": [
+      {
+          "fraktion": "string",
+          "stimme": "string",
+          "name": []
+      }
+  ]
+}
+```
+
 ## Autoren
 
 - Ala Al-Khazzan
@@ -157,4 +186,8 @@ Die JSON-Struktur der Stammdaten der Abgeordneten:
 ## ToDo / Hinweise
 
 - Abstimmungsdaten hinzufügen
-- XML-Daten für Stammdaten vom Team 1 bereitstellen
+  - Vorest Parser für Excel Files
+  - Gruppe 1 müsste (wäre optimal) uns die Daten als Excel in `/data/votes` bereitstellen.
+  - `Datum und Thema` müsste noch rausgefunden werden bzw. von der Downloadseite entnommen werden
+   - Seid Periode 19 hat sch die Syntax Struktur der XML geändert, daher müsste man viele tags im Code einbauen und nach diese Suchen. -> Keine Einheitliche Suche und komplexer
+
