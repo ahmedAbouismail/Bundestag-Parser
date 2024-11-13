@@ -31,9 +31,7 @@ def parse_excel(df):
             "nichtabgegeben"
         ),
         "name": ", ".join(filter(pd.notna, [
-            str(row.get("Bezeichnung", f"{row['Vorname']} {row['Name']}")),
-            str(row.get("xyz", "")),
-            str(row.get("xyzy", ""))
+            str(row.get("Bezeichnung", f"{row['Vorname']} {row['Name']}"))
         ]))
     }, axis=1).tolist()
 
@@ -58,8 +56,7 @@ def parse_excel(df):
 
 def get_all_json():
     all_json = []
-    folder_path = "C:\\Users\\ala19\\uni\\parser\\data\\data\\votes"
-
+    folder_path = "../data/votes"
     for file in os.listdir(folder_path):
         file_path = os.path.join(folder_path, file)
         if os.path.isfile(file_path):

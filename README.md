@@ -189,5 +189,5 @@ Die JSON-Struktur der Namentliche Abstimmungen(vorerst):
   - Vorest Parser für Excel Files
   - Gruppe 1 müsste (wäre optimal) uns die Daten als Excel in `/data/votes` bereitstellen.
   - `Datum und Thema` müsste noch rausgefunden werden bzw. von der Downloadseite entnommen werden
-   - Seid Periode 19 hat sch die Syntax Struktur der XML geändert, daher müsste man viele tags im Code einbauen und nach diese Suchen. -> Keine Einheitliche Suche und komplexer
+   - Seid Periode 19 hat sich die Syntax Struktur der XML geändert, daher müsste man viele tags im Code einbauen und nach diesen Suchen. -> Keine Einheitliche Suche und komplexer
 
