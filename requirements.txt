@@ -1,3 +1,4 @@
 pymongo
 openpyxl
 dateparser
+pandas

@@ -2,7 +2,7 @@ from pymongo import MongoClient, errors
 from pymongo.operations import UpdateOne
 
 try:
-    with open("connectionString.txt", "r") as file:
+    with open("/app/connectionString.txt", "r") as file:
         connectionString = file.read()
 
     client = MongoClient(connectionString)
