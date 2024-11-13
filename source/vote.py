@@ -1,13 +1,16 @@
+import dateparser
+import re
 import pandas as pd
 import os
 
-def parse_excel(df):
+
+def parse_excel(df, date):
     # Initialisiere das JSON-Format mit aggregierten Werten
     parsed_data = {
         "id": f"{df['Wahlperiode'].iloc[0]}{str(df['Sitzungnr'].iloc[0]).zfill(3)}",
         "wahlperiode": str(df["Wahlperiode"].iloc[0]),
         "sitzungsnummer": str(df["Sitzungnr"].iloc[0]),
-        "datum": "",
+        "datum": str(date),
         "thema": "",
         "stimmen_zählung": {
             "abgegebenen": str(df[["ja", "nein", "Enthaltung", "ungültig"]].sum().sum()),
@@ -53,6 +56,20 @@ def parse_excel(df):
     return parsed_data
 
 
+def extract_date(file_name):
+    """
+    Extrahiert das Datum aus dem Dateinamen
+    :param file_name: Dateiname
+    :return: Datum als String
+    """
+    date_pattern = r"(\d{8})"
+    match = re.search(date_pattern, file_name)
+    if match:
+        date_str = match.group(1)
+        parsed_date = dateparser.parse(date_str, date_formats=['%Y%m%d'])
+        return parsed_date.strftime("%Y-%m-%d")
+    return None
+
 
 def get_all_json():
     all_json = []
@@ -61,8 +78,9 @@ def get_all_json():
         file_path = os.path.join(folder_path, file)
         if os.path.isfile(file_path):
             df = pd.read_excel(file_path)
-            json_data = parse_excel(df)
+            date = extract_date(file)
+            json_data = parse_excel(df, date)
             all_json.append(json_data)
 
-    print("Namentliche Stimmen erfolgreich geparst.") 
+    print("Namentliche Stimmen erfolgreich geparst.")
     return all_json
