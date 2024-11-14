@@ -2,6 +2,7 @@ version: '3.8'
 
 services:
   bt_crawler:
+    build: .
     image: lajahom/bundestag-crawler:cron
     container_name: bundestag-crawler-cron
     volumes:
@@ -11,6 +12,7 @@ services:
     tty: true
 
   bt_parser:
+    build: .
     image: darthyoda030/bundestag-parser:cron
     container_name: bundestag-parser-cron
     volumes:
