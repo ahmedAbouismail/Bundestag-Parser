@@ -64,7 +64,6 @@ Die Datenbank `bundestag` enthält drei Hauptkollektionen:
 
 - **Protokolle**: `protokolle`
 - **Stammdaten der Abgeordneten**: `mdb_stammdaten`
-- **Namentliche Abstimmungen**: `namentliche_abstimmungen` (coming soon)
 
 ### Beispielcode für den Datenzugriff (Python)
 
@@ -78,7 +77,6 @@ db = client["bundestag"]
 # Daten aus den Kollektionen abfragen
 protokolle = db["protokolle"].find({})
 abgeordnete = db["mdb_stammdaten"].find({})
-abstimmungen = db["namentliche_abstimmungen"].find({})
 ```
 
 ### Datenstruktur
@@ -146,35 +144,6 @@ Die JSON-Struktur der Stammdaten der Abgeordneten:
 }
 ```
 
-#### Namentliche Abstimmungen
-
-Die JSON-Struktur der Namentliche Abstimmungen(vorerst):
-
-```json
-{
-  "id": "string",
-  "wahlperiode": "string",
-  "sitzungsnummer": "string",
-  "datum": "string",
-  "thema": "string",
-  "stimmen_zählung": {
-      "abgegebenen": "string",
-      "nichtabgegeben": "string",
-      "ja": "string",
-      "nein": "string",
-      "enthaltungen": "string",
-      "ungültige": "string"
-    },
-  "stimmen_namentlich": [
-      {
-          "fraktion": "string",
-          "stimme": "string",
-          "name": []
-      }
-  ]
-}
-```
-
 ## Autoren
 
 - Ala Al-Khazzan
@@ -185,9 +154,7 @@ Die JSON-Struktur der Namentliche Abstimmungen(vorerst):
 
 ## ToDo / Hinweise
 
-- Abstimmungsdaten hinzufügen
-  - Vorest Parser für Excel Files
-  - Gruppe 1 müsste (wäre optimal) uns die Daten als Excel in `/data/votes` bereitstellen.
-  - `Datum und Thema` müsste noch rausgefunden werden bzw. von der Downloadseite entnommen werden
-   - Seid Periode 19 hat sich die Syntax Struktur der XML geändert, daher müsste man viele tags im Code einbauen und nach diesen Suchen. -> Keine Einheitliche Suche und komplexer
+- Eventuell noch zu machen, je nach Bedarf
+  - Unterscheidung zwischen Haupt- und Nebenredner
+  - Kommentare eventuell einbauen
 
