@@ -154,6 +154,7 @@ Die JSON-Struktur der Stammdaten der Abgeordneten:
 
 ## ToDo / Hinweise
 
+- SSH Tunnel entfernen
 - Eventuell noch zu machen, je nach Bedarf
   - Unterscheidung zwischen Haupt- und Nebenredner
   - Kommentare eventuell einbauen
