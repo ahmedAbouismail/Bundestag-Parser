@@ -39,28 +39,14 @@ Jeden Tag um 18:30 Uhr ruft unser Parser automatisch die neuesten Bundestagsprot
 
 Um auf die extrahierten Daten zuzugreifen, stellen Sie bitte eine Verbindung zur MongoDB-Datenbank her. Verwenden Sie dazu folgende Zugangsdaten:
 
-- **Host**: `localhost` (Zugriff über SSH-Tunnel)
-- **Port**: `27017`
+- **Host**: `infosys1.f4.htw-berlin.de:27017` (Zugriff über VPN)
+- **Username**: `reader`
+- **Passwort**: `mongoDB_bundestag-projekt`
 - **Datenbankname**: `bundestag`
-
-Da die Datenbank nur lokal auf dem Server verfügbar ist, benötigen Sie eine Verbindung über das **HTW-Netzwerk oder VPN** und einen **SSH-Tunnel** zur sicheren und verschlüsselten Kommunikation.
-
-#### Verbindung mit SSH-Tunnel herstellen
-
-Richten Sie den SSH-Tunnel in der Kommandozeile wie folgt ein:
-
-```
-ssh -L 27017:localhost:27017 local@infosys1.f4.htw-berlin.de
-```
-
-- **infosys1.f4.htw-berlin.de**: Die Serveradresse, auf der MongoDB läuft.
-- **`-L 27017:localhost:27017`**: Leitet den lokalen Port 27017 auf Port 27017 des Servers weiter.
-
-Solange die SSH-Verbindung aktiv ist, können Sie auf die MongoDB-Datenbank zugreifen, indem Sie `localhost` als Host und `27017` als Port verwenden. Der SSH-Tunnel stellt sicher, dass alle Verbindungen verschlüsselt und sicher übertragen werden. Damit bleibt die Datenbank vor direktem Zugriff aus dem Internet geschützt. Das Passwort für den `local`-User gibt es auf Anfrage per Discord.
 
 ### Datenbankstruktur
 
-Die Datenbank `bundestag` enthält drei Hauptkollektionen:
+Die Datenbank `bundestag` enthält zwei Hauptkollektionen:
 
 - **Protokolle**: `protokolle`
 - **Stammdaten der Abgeordneten**: `mdb_stammdaten`
@@ -71,7 +57,7 @@ Die Datenbank `bundestag` enthält drei Hauptkollektionen:
 from pymongo import MongoClient
 
 # Verbindung zur MongoDB
-client = MongoClient("mongodb://reader:mongoDB_bundestag-projekt@localhost:27017/bundestag")
+client = MongoClient("mongodb://reader:mongoDB_bundestag-projekt@infosys1.f4.htw-berlin.de:27017/bundestag")
 db = client["bundestag"]
 
 # Daten aus den Kollektionen abfragen
@@ -154,7 +140,6 @@ Die JSON-Struktur der Stammdaten der Abgeordneten:
 
 ## ToDo / Hinweise
 
-- SSH Tunnel entfernen
 - Eventuell noch zu machen, je nach Bedarf
   - Unterscheidung zwischen Haupt- und Nebenredner
   - Kommentare eventuell einbauen
