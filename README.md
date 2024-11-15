@@ -33,7 +33,7 @@ Der Container verarbeitet nun automatisch die Bundestagsprotokolle und Stammdate
 ## Benutzer-Informationen
 
 ### Täglicher Datenabruf
-Jeden Tag um 18:30 Uhr ruft unser Parser automatisch die neuesten Bundestagsprotokolle, Stammdaten und Abstimmungsdaten vom [Crawler Team1](https://gitlab.com/bachelor8684930/bundestagcrawler) ab. Nach dem Abruf beginnt der Parser sofort mit der Extraktion und Speicherung der relevanten Informationen.
+Jeden Tag um 18:30 Uhr ruft unser Parser automatisch die neuesten Bundestagsprotokolle und Stammdaten vom [Crawler Team1](https://gitlab.com/bachelor8684930/bundestagcrawler) ab. Nach dem Abruf beginnt der Parser sofort mit der Extraktion und Speicherung der relevanten Informationen.
 
 ### Datenzugriff
 
