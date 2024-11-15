@@ -8,7 +8,7 @@ Der Bundestag-Parser extrahiert und speichert wichtige Informationen aus den Bun
 ### Anforderungen
 - **Docker**
 - **Docker Compose**
-- Zugriff auf die MongoDB-Datenbank (über SSH-Tunnel, siehe unten)
+- **Zugriff auf die MongoDB-Datenbank** (über SSH-Tunnel, siehe unten)
 
 ### Workflow
 
