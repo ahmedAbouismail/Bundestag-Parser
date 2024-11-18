@@ -4,7 +4,7 @@ from source.protocol import parse_xml, get_all_json
 
 class TestProtocol(unittest.TestCase):
     def setUp(self):
-        self.xml_file_path = "data/20195.xml"
+        self.xml_file_path = "data/protocols/20195.xml"
         self.test_dir = "data/"  # XML Dateien für get_all_json
 
     def test_parse_xml_structure(self):

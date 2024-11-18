@@ -1,5 +1,6 @@
 import xml.etree.ElementTree as ET
 
+
 def parse_mdb(mdb_element):
     # Extrahiere ID und persönliche Angaben
     id = mdb_element.findtext("ID")
@@ -7,7 +8,7 @@ def parse_mdb(mdb_element):
     vorname = mdb_element.findtext("NAMEN/NAME/VORNAME")
     nachname = mdb_element.findtext("NAMEN/NAME/NACHNAME")
     fraktion = mdb_element.find("BIOGRAFISCHE_ANGABEN/PARTEI_KURZ").text
-    
+
     # Biographie
     biographie = {
         "geburtsdatum": mdb_element.findtext("BIOGRAFISCHE_ANGABEN/GEBURTSDATUM"),
@@ -17,7 +18,7 @@ def parse_mdb(mdb_element):
         "beruf": mdb_element.findtext("BIOGRAFISCHE_ANGABEN/BERUF"),
         "lebenslauf": mdb_element.findtext("BIOGRAFISCHE_ANGABEN/VITA_KURZ", default="")
     }
-    
+
     # Wahlperioden
     wahlperioden = []
     for wp in mdb_element.findall("WAHLPERIODEN/WAHLPERIODE"):
@@ -53,11 +54,12 @@ def parse_mdb(mdb_element):
         "biographie": biographie,
         "wahlperiode": wahlperioden
     }
-    
+
     return result
 
-def get_all():
-    tree = ET.parse("/data/MDB_STAMMDATEN.XML")
+
+def get_all(dir_path="/data/MDB_STAMMDATEN.XML"):
+    tree = ET.parse(dir_path)
     root = tree.getroot()
 
     # Extrahiere alle MDB Einträge
