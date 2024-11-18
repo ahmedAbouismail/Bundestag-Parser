@@ -1,6 +1,7 @@
 import xml.etree.ElementTree as ET
 import os
 
+
 def parse_xml(xml_file):
     # Parse the XML file
     tree = ET.parse(xml_file)
@@ -18,9 +19,9 @@ def parse_xml(xml_file):
     # Parse session course
     sitzungsverlauf_data = []
     for speech in root.findall(".//sitzungsverlauf/tagesordnungspunkt/rede"):
-        
+
         speech_data = {"rede": []}
-        
+
         current_speaker = None
         collecting_text = True  # Variable to control text collection based on <name> tag
 
@@ -58,13 +59,14 @@ def parse_xml(xml_file):
 
     return json_data
 
-def get_all_json():
+
+def get_all_json(dir_path='/data/protocols'):
     all_json = []
-    folder_path = "/data/protocols"
+    folder_path = dir_path
     for file in os.listdir(folder_path):
         file_path = os.path.join(folder_path, file)
         if os.path.isfile(file_path):  # Only process files, not subdirectories
             all_json.append(parse_xml(file_path))
 
-    print("Protokolle erfolgreich geparst.") 
+    print("Protokolle erfolgreich geparst.")
     return all_json
