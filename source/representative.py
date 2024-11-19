@@ -2,6 +2,11 @@ import xml.etree.ElementTree as ET
 
 
 def parse_mdb(mdb_element):
+    """
+    Parst eine Zugeordnete-Struktur und extrahiert Zugeordneten-Daten
+    :param mdb_element: Elementbaum aus einem XML-Dokument
+    :return: Strukturierte Daten in Form eines JSON-Objects
+    """
     # Extrahiere ID und persönliche Angaben
     id = mdb_element.findtext("ID")
     titel = mdb_element.findtext("NAMEN/NAME/ANREDE_TITEL")
@@ -59,6 +64,11 @@ def parse_mdb(mdb_element):
 
 
 def get_all(dir_path="/data/MDB_STAMMDATEN.XML"):
+    """
+    Extrahiert alle Zugeordneten aus einer XML-Datei
+    :param dir_path: Verzeichnispfad zu den MDB-Datei
+    :return: Eine Liste von JSON-Objekten zurück, die alle Zugeordneten-Daten enthalten
+    """
     tree = ET.parse(dir_path)
     root = tree.getroot()
 

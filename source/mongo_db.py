@@ -5,6 +5,12 @@ from pymongo.operations import UpdateOne
 db = None
 
 try:
+    """
+    Versucht, eine Verbindung zur MongoDB-Datenbank herzustellen.
+    
+    Die Verbindungszugangsdaten werden aus einer externen Datei "connectionString.txt" gelesen.
+    Bei Fehlschlag werden die entsprechenden Fehler geworfen
+    """
     with open("/app/connectionString.txt", "r") as file:
         connectionString = file.read()
 
@@ -19,6 +25,12 @@ except Exception as e:
 
 
 def sync(data, collection_name):
+    """
+    Schreibt Daten in einer bestimmten MongoDB-Collection
+    Die Funktion verwendet die UpdateOne Operation, um Daten zu aktualisieren oder einzufügen
+    :param data: Daten, die in der Collection gespeichert werden
+    :param collection_name: Name der Collection
+    """
     try:
         collection = db[collection_name]
 

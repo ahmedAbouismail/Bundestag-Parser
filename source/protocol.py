@@ -3,6 +3,11 @@ import os
 
 
 def parse_xml(xml_file):
+    """
+    Parst eine XML-Datei und extrahiert daraus Sitzungsdaten
+    :param xml_file: Der Pfad zu einer XML-Datei
+    :return: Strukturierte Daten in Form eines JSON-Objects
+    """
     # Parse the XML file
     tree = ET.parse(xml_file)
     root = tree.getroot()
@@ -61,6 +66,11 @@ def parse_xml(xml_file):
 
 
 def get_all_json(dir_path='/data/protocols'):
+    """
+    Durchläuft einen Verzeichnispfad und parst jede XML-Datei darin
+    :param dir_path: Verzeichnispfad zu den Protokollen
+    :return: Eine Liste von JSON-Objekten zurück, die alle Protokolle enthalten
+    """
     all_json = []
     folder_path = dir_path
     for file in os.listdir(folder_path):
