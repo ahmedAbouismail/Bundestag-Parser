@@ -1,14 +1,14 @@
 # Bundestag-Parser
 
 ## Projektbeschreibung
-Der Bundestag-Parser extrahiert und speichert wichtige Informationen aus den Bundestagsprotokollen sowie den Stammdaten der Abgeordneten seit 1949. Die extrahierten Daten werden in MongoDB im BSON-Format gespeichert und sind für die Weiterverarbeitung zugänglich.
+Der Bundestag-Parser extrahiert und speichert wichtige Informationen aus den Bundestagsprotokollen seit der 19. Wahlperiode, sowie den Stammdaten der Abgeordneten seit 1949. Die extrahierten Daten werden in MongoDB im JSON-Format gespeichert und sind für die Weiterverarbeitung zugänglich.
 
 ## Entwickler-Informationen
 
 ### Anforderungen
 - **Docker**
 - **Docker Compose**
-- **Zugriff auf die MongoDB-Datenbank** (über SSH-Tunnel, siehe unten)
+- **Zugriff auf die MongoDB-Datenbank** (über HTW-Netzwerk, siehe unten)
 
 ### Workflow
 
