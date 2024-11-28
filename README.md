@@ -144,3 +144,5 @@ Die JSON-Struktur der Stammdaten der Abgeordneten:
   - Unterscheidung zwischen Haupt- und Nebenredner
   - Kommentare eventuell einbauen
 
+- Texte auf Sonderzeichen und Anomalien prüfen!
+
