@@ -1,4 +1,3 @@
-import json
 import unittest
 import xml.etree.ElementTree as ET
 from source.representative import parse_mdb, get_all
