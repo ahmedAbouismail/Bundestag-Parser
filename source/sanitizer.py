@@ -17,9 +17,6 @@ def sanitize_string(text):
     # Normalisiert Zeilenumbrüche, um Konsistenz über Plattformen (z. B. Windows und Mac) hinweg sicherzustellen
     text = text.replace('\r\n', '\n').replace('\r', '\n')
 
-    # Entfernt nicht druckbare Zeichen, die den Text beschädigen können.
-    text = re.sub(r'[^\x20-\x7E\xA0-\xFF]', '', text)
-
     # Ersetzt Anführungszeichen und Bindestriche durch Standardzeichen
     text = text.replace('“', '"').replace('”', '"').replace('‘', "'").replace('’', "'")
     text = text.replace('–', '-').replace('—', '-')
@@ -29,6 +26,9 @@ def sanitize_string(text):
 
     # Schneidet führende und nachfolgende Leerzeichen ab
     text = ' '.join(text.split())
+
+    # Entfernt nicht druckbare Zeichen, die den Text beschädigen können.
+    text = re.sub(r'[^\x20-\x7E\xA0-\xFF\n]', '', text)
 
     return text
 
