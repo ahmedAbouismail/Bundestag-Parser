@@ -1,3 +1,4 @@
+import os
 import re
 import json
 import logging
@@ -5,9 +6,12 @@ import unicodedata
 from html import unescape
 from logging.handlers import RotatingFileHandler
 
+log_directory = "logs/data_cleaning"
+os.makedirs(log_directory, exist_ok=True)
+
 # Configure logging with rotation
 log_handler = RotatingFileHandler(
-    filename="logs/data_cleaning/data_cleaning.log",  # Log file name
+    filename=os.path.join(log_directory, "data_cleaning.log"),  # Log file name
     mode="a",  # Append mode
     maxBytes=5 * 1024 * 1024,  # Maximum log file size (e.g., 5 MB)
     backupCount=10,  # Keep 3 backup files
