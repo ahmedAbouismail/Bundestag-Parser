@@ -1,3 +1,5 @@
 source/data/
 __pycache__/
 connectionString.txt
+data
+logs

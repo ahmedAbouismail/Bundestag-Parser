@@ -1,6 +1,6 @@
 import xml.etree.ElementTree as ET
 import os
-
+import stats
 
 def parse_xml(xml_file):
     """
@@ -52,6 +52,7 @@ def parse_xml(xml_file):
                 collecting_text = False
 
         sitzungsverlauf_data.append(speech_data)
+        stats.TOTAL_SPEECHES += 1
 
     # Create the JSON object with German keys
     json_data = {
@@ -77,6 +78,7 @@ def get_all_json(dir_path='/data/protocols'):
         file_path = os.path.join(folder_path, file)
         if os.path.isfile(file_path):  # Only process files, not subdirectories
             all_json.append(parse_xml(file_path))
+            stats.TOTAL_PROTOCOL_COUNT += 1
 
     print("Protokolle erfolgreich geparst.")
     return all_json

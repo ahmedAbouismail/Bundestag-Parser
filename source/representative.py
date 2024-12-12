@@ -1,5 +1,5 @@
 import xml.etree.ElementTree as ET
-
+import stats
 
 def parse_mdb(mdb_element):
     """
@@ -76,6 +76,7 @@ def get_all(dir_path="/data/MDB_STAMMDATEN.XML"):
     mdb_list = []
     for mdb in root.findall("MDB"):
         mdb_list.append(parse_mdb(mdb))
+        stats.TOTAL_REPRESENTATIVE_COUNT += 1
 
     print("Stammdaten erfolgreich geparst.")
     return mdb_list
