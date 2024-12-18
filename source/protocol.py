@@ -45,7 +45,7 @@ def parse_xml(xml_file):
             elif element.tag == "p" and collecting_text:
                 if element.attrib.get("klasse") in ["J", "J_1", "O"] and current_speaker:
                     text_content = element.text or ""
-                    current_speaker["text"] += text_content
+                    current_speaker["text"] += " " + text_content
 
             # Stop collecting text after <name> tag appears
             elif element.tag == "name":
