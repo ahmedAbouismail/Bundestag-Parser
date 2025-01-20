@@ -137,12 +137,3 @@ Die JSON-Struktur der Stammdaten der Abgeordneten:
 - Marc Zimmermann
 
 **Projektteam 2 - Bundestag-Parser, HTW Berlin**
-
-## ToDo / Hinweise
-
-- Eventuell noch zu machen, je nach Bedarf
-  - Unterscheidung zwischen Haupt- und Nebenredner
-  - Kommentare eventuell einbauen
-
-- Texte auf Sonderzeichen und Anomalien prüfen!
-
