@@ -46,11 +46,11 @@ Um auf die extrahierten Daten zuzugreifen, stellen Sie bitte eine Verbindung zur
 
 ### Datenbankstruktur
 
-Die Datenbank `bundestag` enthält zwei Hauptkollektionen:
+Die Datenbank `bundestag` enthält drei Hauptkollektionen:
 
 - **Protokolle**: `protokolle`
 - **Stammdaten der Abgeordneten**: `mdb_stammdaten`
-- **Statistik zu den Abgeordneten, Protokolen und Reden**: `statistics`
+- **Statistik zu den Abgeordneten, Protokollen und Reden**: `statistics`
 
 ### Beispielcode für den Datenzugriff (Python)
 
@@ -138,10 +138,10 @@ Die JSON-Struktur der Statistiken sieht wie folgt aus:
 
 ```json
 {
-  "id": 1,
-  "Protokolle": "string",
-  "Abgeordnete seit 1949": "string",
-  "Reden": "string"
+  "id": "statistics",
+  "Protokolle": 0,
+  "Abgeordnete seit 1949": 0,
+  "Reden": 0
 }
 ```
 ## Autoren
