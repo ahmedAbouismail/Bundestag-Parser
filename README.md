@@ -50,6 +50,7 @@ Die Datenbank `bundestag` enthält zwei Hauptkollektionen:
 
 - **Protokolle**: `protokolle`
 - **Stammdaten der Abgeordneten**: `mdb_stammdaten`
+- **Statistik zu den Abgeordneten, Protokolen und Reden**: `statistics`
 
 ### Beispielcode für den Datenzugriff (Python)
 
@@ -61,8 +62,9 @@ client = MongoClient("mongodb://reader:mongoDB_bundestag-projekt@infosys1.f4.htw
 db = client["bundestag"]
 
 # Daten aus den Kollektionen abfragen
-protokolle = db["protokolle"].find({})
-abgeordnete = db["mdb_stammdaten"].find({})
+representative = db["mdb_stammdaten"].find({})
+protocols = db["protokolle"].find({})
+stats = db["statistics"].find({})
 ```
 
 ### Datenstruktur
@@ -130,6 +132,18 @@ Die JSON-Struktur der Stammdaten der Abgeordneten:
 }
 ```
 
+#### Statistiken
+
+Die JSON-Struktur der Statistiken sieht wie folgt aus:
+
+```json
+{
+  "id": 1,
+  "Protokolle": "string",
+  "Abgeordnete seit 1949": "string",
+  "Reden": "string"
+}
+```
 ## Autoren
 
 - Ala Al-Khazzan
